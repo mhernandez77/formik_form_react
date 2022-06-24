@@ -14,13 +14,25 @@ function App() {
     onSubmit: values => {
       console.log('form:', values);
     },
-    handleValidation: values => {
+      handleValidation => {
       let errors = {};
       if(!values.email) errors.name = "Field Required";
       if(!values.password) errors.password = "Field Required";
       return errors;
     }
   });
+
+  // const [errors, setErrors] = React.useState({emailError: '',
+  //     passwordError: ''});
+
+  // function validate(){
+  //     if (!values.name){
+  //         setError({...errors, nameError: 'bad'})
+  //     }
+  //     else{
+  //         setError({...errors, nameError: ''})
+  //     }
+  // }
 
   return (
       <div>
@@ -39,6 +51,7 @@ function App() {
               <div style={{color: 'red'}}>
                 {formik.errors.email}
               </div>:null}
+            <div style={{color:'red'}}>{errors.emailError}</div>
 
 
           <div>Password</div>
@@ -54,8 +67,9 @@ function App() {
               <div style={{color: 'red'}}>
                 {formik.errors.password}
               </div>:null}
+            <div style={{color:'red'}}>{errors.passwordError}</div>
           <button
-              onClick={handleValidation}
+              onClick={formik.handleValidation}
               id="submitBtn"
               type="Submit">Submit</button>
           {/*    The submit button should have an id of submitBtn*/}
