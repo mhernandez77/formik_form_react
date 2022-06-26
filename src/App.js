@@ -13,10 +13,10 @@ function App() {
     onSubmit: values => {
       console.log('form:', values);
     },
-    validation: value => {
+    validation: values => {
       let errors = {};
-      if(!values.email) errors.email = "Field Required";
-      if(!values.password) errors.password = "Field Required";
+      if(!formik.values.email) errors.password = "Field Required";
+      if(!formik.values.password) errors.password = "Field Required";
       return errors;
     }
   });
